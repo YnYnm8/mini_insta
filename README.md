@@ -1,5 +1,4 @@
 # mini_insta
-# mini_insta
 
 Une application web simple de partage de photos. Uploadez une photo avec un titre, elle s'affichera sur la page d'accueil.
 
