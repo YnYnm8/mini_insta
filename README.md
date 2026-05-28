@@ -1,42 +1,29 @@
-# mini_insta
+# meikosan/mini_insta
 
-Une application web simple de partage de photos. Uploadez une photo avec un titre, elle s'affichera sur la page d'accueil.
+Une application web simple de partage de photos.
+Uploadez une photo avec un titre, elle s'affichera sur la page d'accueil.
 
 ## Fonctionnalités
-
 - Upload de photos (JPG, PNG, GIF, WEBP, etc.)
 - Ajout d'un titre à chaque photo
 - Affichage de toutes les photos sur la page d'accueil
 
 ## Stack technique
-
 - PHP 8.2
 - Apache
-- CSS
 
-## Lancer avec Docker (sans installer PHP)
-
-### Prérequis
-
+## Prérequis
 - Docker
-- Docker Compose
 
-### Étapes
+## Lancer le conteneur
 
 ```bash
-git clone https://github.com/YnYnm8/mini_insta.git
-cd mini_insta
-docker compose up --build
+docker run -d -p 8074:80 meikosan/mini_insta
 ```
 
-Puis ouvrir http://localhost:8080 dans le navigateur.
+Puis ouvrir http://localhost:8074 dans le navigateur.
 
-## Structure des fichiers
-
-```
-mini_insta/
-├── index.php       # Page d'accueil (galerie + formulaire d'upload)
-├── upload.php      # Traitement de l'upload
-├── style.css       # Styles
-└── photos/         # Dossier de stockage des photos uploadées
-```
+## Ports
+| Port interne | Port externe | Description |
+|---|---|---|
+| 80 | 8074 | Serveur Apache |
