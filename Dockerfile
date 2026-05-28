@@ -1,14 +1,15 @@
 FROM php:8.2-apache
 
-RUN apt-get update && apt-get install -y libexif-dev \
-    && docker-php-ext-install exif
-
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+RUN docker-php-ext-install exif
+# アップロード上限を5MBに変更
+RUN echo "upload_max_filesize = 5M" > /usr/local/etc/php/conf.d/uploads.ini
+RUN echo "post_max_size = 5M" >> /usr/local/etc/php/conf.d/uploads.ini
 
 COPY . /var/www/html/
 
-RUN mkdir -p /var/www/html/photos \
-    && chown -R www-data:www-data /var/www/html/photos \
-    && chmod 775 /var/www/html/photos
+# photosフォルダの権限を設定する
+RUN mkdir -p /var/www/html/photos
+RUN chmod 777 /var/www/html/photos
+
 
 EXPOSE 80
